@@ -8,6 +8,4 @@ function initMap() {
         zoom: 10,
         center: la
     });
-
-    // ko.applyBindings(new MapViewModel());
 }
