@@ -3,6 +3,8 @@ var currentLocation = null;
 
 // Object to hold information about a particular location.
 function Location(name, latitude, longitude) {
+    // Declare and use 'self' to avoid scoping confusion with 'this'
+    // in internal functions.
     var self = this;
     self.name = name;
     self.latitude = latitude;
@@ -45,6 +47,15 @@ function Location(name, latitude, longitude) {
         self.marker.setAnimation(null);
     }
 
+    self.hide = function() {
+        self.closeInfo();
+        self.marker.setVisible(false);
+    }
+
+    self.show = function() {
+        self.marker.setVisible(true);
+    }
+
     // bring up the info window when clicked
     self.marker.addListener('click', self.toggleInfo);
 
@@ -67,16 +78,23 @@ function MapViewModel() {
 
     self.results = ko.computed(function() {
         if (self.searchQuery() === "") {
+            for (i = 0; i < self.attractions().length; i++) {
+                self.attractions()[i].show();
+            }
             return self.attractions();
         }
 
-        // make a regular expression from user input and ignore case
+        // Do a very simple regex matching: if the name of the location
+        // contains the user's search term (ignoring case), it matches.
         var regEx = new RegExp(self.searchQuery(), 'i');
         var matched = [];
         for (i = 0; i < self.attractions().length; i++) {
             var attraction = self.attractions()[i];
             if (attraction.name.match(regEx)) {
+                attraction.show();
                 matched.push(attraction);
+            } else {
+                attraction.hide();
             }
         }
 
