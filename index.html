@@ -15,18 +15,18 @@
         </form>
         <br>
         <div id="locations">
-            <ul data-bind="foreach: mapLocations">
-                <li><button data-bind="text: name"></button></li>
+            <ul>
+                <li><button></button></li>
             </ul>
         </div>
     </div>
-    <div id="map"></div>        
+    <div id="map"></div>
+    <script src="js/map.js"></script>        
     <!-- Knockout CDN -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.1/knockout-min.js"></script>
     <!-- Google Maps API -->
     <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDBL9PC8OpuT8biiIBJzexP0TDCuINoRko&callback=initMap">
     </script>
-    <script src="js/map.js"></script>
 </body>
 </html>
