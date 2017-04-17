@@ -1,43 +1,45 @@
 // Object to hold information about a particular location.
 function Location(name, latitude, longitude) {
-    this.name = name;
-    this.latitude = latitude;
-    this.longitude = longitude;
+    var self = this;
+    self.name = name;
+    self.latitude = latitude;
+    self.longitude = longitude;
 
-    // Create the map marker for this SubwayStation object
-    this.marker = new google.maps.Marker({
-        position: {lat: this.latitude, lng: this.longitude},
+    // Create the map marker for self SubwayStation object
+    self.marker = new google.maps.Marker({
+        position: {lat: self.latitude, lng: self.longitude},
         map: map,
-        title: this.name
+        title: self.name
     });
 
     // The location's info window
-    this.info = new google.maps.InfoWindow({
-        content: this.name
+    self.info = new google.maps.InfoWindow({
+        content: self.name
     });
 
     // function to open a window
-    this.openInfo = function() {
-        this.info.open(map, this.marker);
+    self.openInfo = function() {
+        self.info.open(map, self.marker);
     }
 
     // function to close a window
-    this.closeInfo = function() {
-        this.info.close();
+    self.closeInfo = function() {
+        self.info.close();
     }
 
     // bring up the info window when clicked
-    this.marker.addListener('click', this.openInfo());
+    self.marker.addListener('click', self.openInfo);
 }
 
 // Viewmodel for the application
 function MapViewModel() {
-    this.attractions = ko.observableArray([]);
+    var self = this;
+    self.attractions = ko.observableArray([]);
 
     for (i = 0; i < locations.length; i++) {
         var locationInfo = locations[i];
         // add a new location object to the array
-        this.attractions.push(new Location(locationInfo.name, 
+        self.attractions.push(new Location(locationInfo.name, 
                               locationInfo.lat, locationInfo.lng));        
     }
 }
