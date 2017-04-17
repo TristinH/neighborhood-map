@@ -1,3 +1,6 @@
+// variable to hold the current location being viewed
+var currentLocation = null;
+
 // Object to hold information about a particular location.
 function Location(name, latitude, longitude) {
     var self = this;
@@ -17,18 +20,30 @@ function Location(name, latitude, longitude) {
         content: self.name
     });
 
-    // function to open a window
+    // Close the currently displayed window if there is one
+    // and display the info window on the marker clicked.
+    self.toggleInfo = function() {
+        if (currentLocation != null) {
+            currentLocation.closeInfo();            
+        } 
+
+        self.openInfo();
+        currentLocation = self;
+    }
+
     self.openInfo = function() {
         self.info.open(map, self.marker);
+        self.marker.setAnimation(google.maps.Animation.BOUNCE);
     }
 
     // function to close a window
     self.closeInfo = function() {
         self.info.close();
+        self.marker.setAnimation(null);
     }
 
     // bring up the info window when clicked
-    self.marker.addListener('click', self.openInfo);
+    self.marker.addListener('click', self.toggleInfo);
 }
 
 // Viewmodel for the application
