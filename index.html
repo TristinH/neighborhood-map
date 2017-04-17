@@ -9,14 +9,11 @@
     <div id="search-bar">
         <h3>Search Los Angeles</h3>
         <br>
-        <form>
-            <input type="text" name="search" class="text-input">
-            <input type="submit" value="Search" class="submit-button">
-        </form>
+        <input type="text" class="text-input" data-bind="textInput: searchQuery">
         <br>
         <div id="locations">
-            <ul>
-                <li><button></button></li>
+            <ul data-bind="foreach: results">
+                <li><button data-bind="click: $data.toggleInfo"><span data-bind="text: $data.name"></span></button></li>
             </ul>
         </div>
     </div>

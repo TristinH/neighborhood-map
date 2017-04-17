@@ -23,7 +23,9 @@ function Location(name, latitude, longitude) {
     // Close the currently displayed window if there is one
     // and display the info window on the marker clicked.
     self.toggleInfo = function() {
-        if (currentLocation != null) {
+        if (currentLocation === self) {
+            return;
+        } else if (currentLocation !== null) {
             currentLocation.closeInfo();            
         } 
 
@@ -31,12 +33,13 @@ function Location(name, latitude, longitude) {
         currentLocation = self;
     }
 
+    // Open an info window on the marker
     self.openInfo = function() {
         self.info.open(map, self.marker);
         self.marker.setAnimation(google.maps.Animation.BOUNCE);
     }
 
-    // function to close a window
+    // Close the info window on the marker
     self.closeInfo = function() {
         self.info.close();
         self.marker.setAnimation(null);
@@ -44,12 +47,16 @@ function Location(name, latitude, longitude) {
 
     // bring up the info window when clicked
     self.marker.addListener('click', self.toggleInfo);
+
+    // Make sure the info window is closed when a user clicks to close it
+    self.info.addListener('closeclick', self.closeInfo);
 }
 
 // Viewmodel for the application
 function MapViewModel() {
     var self = this;
     self.attractions = ko.observableArray([]);
+    self.searchQuery = ko.observable("");
 
     for (i = 0; i < locations.length; i++) {
         var locationInfo = locations[i];
@@ -57,6 +64,24 @@ function MapViewModel() {
         self.attractions.push(new Location(locationInfo.name, 
                               locationInfo.lat, locationInfo.lng));        
     }
+
+    self.results = ko.computed(function() {
+        if (self.searchQuery() === "") {
+            return self.attractions();
+        }
+
+        // make a regular expression from user input and ignore case
+        var regEx = new RegExp(self.searchQuery(), 'i');
+        var matched = [];
+        for (i = 0; i < self.attractions().length; i++) {
+            var attraction = self.attractions()[i];
+            if (attraction.name.match(regEx)) {
+                matched.push(attraction);
+            }
+        }
+
+        return matched;
+    });
 }
 
 // map object for the main map display
