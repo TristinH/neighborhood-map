@@ -55,7 +55,7 @@ file the following script tag imports knockout through a CDN:
 </pre>
 Knockout is used to adjust the visibility of the buttons and markers based on
 search results from user input. It is also used to track the text typed in the
-search bar itself. To learn more about Knockout and how to download it visit this
+search bar itself. To learn more about Knockout visit this
 <a href="http://knockoutjs.com/">link</a>.
 </div>
 
