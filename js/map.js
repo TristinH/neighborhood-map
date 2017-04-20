@@ -22,7 +22,7 @@ function Location(name, latitude, longitude) {
 
     self.populateInfo = function() {
         // Check if the content has already been constructed.
-        if (self.info.getContent() !== null) {
+        if (self.info.getContent() != null) {
             return;
         }
 
