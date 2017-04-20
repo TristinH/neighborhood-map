@@ -2,8 +2,9 @@
 <html>
 <head>
     <meta charset="utf-8">
+    <meta name=viewport content="width=device-width, initial-scale=1">
     <title>Neighborhood Map</title>
-    <link rel="stylesheet" type="text/css" href="styles/styles.css">
+    <link rel="stylesheet" href="styles/styles.css">
 </head>
 <body>
     <div id="search-bar">
@@ -20,14 +21,14 @@
     <div id="map"></div>
     <script src="js/map.js"></script>
     <!-- JQuery CDN -->
-    <script 
-    src="https://code.jquery.com/jquery-3.2.1.min.js" 
+    <script
+    src="https://code.jquery.com/jquery-3.2.1.min.js"
     integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-    crossorigin="anonymous"></script>        
+    crossorigin="anonymous"></script>
     <!-- Knockout CDN -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.1/knockout-min.js"></script>
     <!-- Google Maps API -->
-    <script async defer
+    <script async defer onerror="mapErrorHandler()"
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDBL9PC8OpuT8biiIBJzexP0TDCuINoRko&callback=initMap">
     </script>
 </body>

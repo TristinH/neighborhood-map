@@ -22,7 +22,7 @@ function Location(name, latitude, longitude) {
 
     self.populateInfo = function() {
         // Check if the content has already been constructed.
-        if (self.info.getContent() != null) {
+        if (self.info.getContent() !== null) {
             return;
         }
 
@@ -57,7 +57,7 @@ function Location(name, latitude, longitude) {
             infoWindowContent += 'Could not load image.';
             self.info.setContent(infoWindowContent);
         });
-    }
+    };
 
     // Close the currently displayed window if there is one
     // and display the info window on the marker clicked.
@@ -66,38 +66,38 @@ function Location(name, latitude, longitude) {
         if (currentLocation === self) {
             return;
         // Make sure the location is not null before trying to access members
-        } else if (currentLocation != null) {
+        } else if (currentLocation !== null) {
             currentLocation.closeInfo();
         }
 
         self.populateInfo();
         self.openInfo();
         currentLocation = self;
-    }
+    };
 
     // Open an info window on the marker
     self.openInfo = function() {
         self.info.open(map, self.marker);
         map.panTo(new google.maps.LatLng(self.latitude, self.longitude));
         self.marker.setAnimation(google.maps.Animation.BOUNCE);
-    }
+    };
 
     // Close the info window on the marker
     self.closeInfo = function() {
         self.info.close();
         self.marker.setAnimation(null);
-    }
+    };
 
     // Hide a marker from the view
     self.hide = function() {
         self.closeInfo();
         self.marker.setVisible(false);
-    }
+    };
 
     // Shows markers that are hidden
     self.show = function() {
         self.marker.setVisible(true);
-    }
+    };
 
     // Bring up the info window when clicked
     self.marker.addListener('click', self.toggleInfo);
@@ -162,6 +162,10 @@ function initMap() {
     });
 
     ko.applyBindings(new MapViewModel());
+}
+
+function mapErrorHandler() {
+    document.getElementById('map').innerHTML = "Google maps could not load properly";
 }
 
 // Model for the app

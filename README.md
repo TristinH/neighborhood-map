@@ -13,7 +13,7 @@ required to obtain photos from Flickr's photos API. Instructions on how to obtai
 an API key and how to insert it into the project to make it run properly are
 provided below in the Flickr Image API section.**
 
-### APIS and Frameworks used
+### APIs and Frameworks used
 
 Note: Not much installation is required to use this project. Most of the third
 party APIS and Frameworks used are delivered automatically to the project through
@@ -25,18 +25,19 @@ described in detail below.
 
 To render and perform operations on the map, the Google Maps API was used. The
 API is imported into the application with the following script tag in index.html:
-<pre>
+
+`
     <!-- Google Maps API -->
     <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDBL9PC8OpuT8biiIBJzexP0TDCuINoRko&callback=initMap">
     </script>
-</pre>
+`
+
 This loads the API into the project and specifies the method to call when the map
 is loaded (initMap). Using the API, it is possible to specify markers on the UI
 that identify locations based on their latitude and longitude. It is possible to
 attach windows to the markers to display information about the location when the
-marker is clicked. To learn more about how Google Maps API works visit this
-[link](https://developers.google.com/maps/).
+marker is clicked. To learn more about how Google Maps API works visit this [link](https://developers.google.com/maps/).
 
 #### Knockout Framework
 
@@ -46,14 +47,15 @@ a user sees (the view) corresponds to the data in the background of the applicat
 (the model). This is done by creating a custom ViewModel class that tells Knockout
 how to track the data in the model and update the view accordingly. In the index.html
 file the following script tag imports knockout through a CDN:
-<pre>
+
+`
     <!-- Knockout CDN -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.1/knockout-min.js"></script>
-</pre>
+`
+
 Knockout is used to adjust the visibility of the buttons and markers based on
 search results from user input. It is also used to track the text typed in the
-search bar itself. To learn more about Knockout and how to download it visit this
-[link](http://knockoutjs.com/).
+search bar itself. To learn more about Knockout visit this [link](http://knockoutjs.com/).
 
 
 #### JQuery Library
@@ -63,17 +65,18 @@ dealing with vanilla JavaScript while supporting cross browser compatability.
 The main use of JQuery in this project was to simplify the process of making an
 AJAX request for data. JQuery is included in this project through a call to a CDN
 in the following line in index.html:
-<pre>
+
+`
     <!-- JQuery CDN -->
     <script
     src="https://code.jquery.com/jquery-3.2.1.min.js"
     integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
     crossorigin="anonymous"></script>
-</pre>
+`
+
 JQuery offers many features that were not utilized in this project so for the
 scope of this project only the JQuery AJAX methods are relevant. To read more
-about how JQuery supports AJAX requests visit this
-[link](http://api.jquery.com/jquery.ajax/).
+about how JQuery supports AJAX requests visit this [link](http://api.jquery.com/jquery.ajax/).
 
 #### Flickr Image API
 
@@ -114,14 +117,14 @@ key from Flickr:
 
 *   Once you click submit on the API key application form you will be taken to a page
     that will give you your API key and API secret. We are only interested in the
-    API key. Copy the API key and replace the bolded part below in map.js with your
+    API key. Copy the API key and replace NEED_API_KEY below in map.js with your
     API key:
 ```javascript
     // Construct the URL to make the AJAX request to Flickr's servers
     var flickrURL = "https://api.flickr.com/services/rest/?" +
                     "method=flickr.photos.search&" +
                     // Your API key goes here
-                    "api_key=**NEED_API_KEY**&" +
+                    "api_key=NEED_API_KEY&" +
                     "per_page=1&format=json&nojsoncallback=1&text=";
 ```
 Once you have added your API key to map.js, you can open index.html in your browser
