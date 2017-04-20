@@ -26,12 +26,12 @@ described in detail below.
 To render and perform operations on the map, the Google Maps API was used. The
 API is imported into the application with the following script tag in index.html:
 
-`
+```
 <!-- Google Maps API -->
 <script async defer
 src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDBL9PC8OpuT8biiIBJzexP0TDCuINoRko&callback=initMap">
 </script>
-`
+```
 
 This loads the API into the project and specifies the method to call when the map
 is loaded (initMap). Using the API, it is possible to specify markers on the UI
@@ -48,10 +48,10 @@ a user sees (the view) corresponds to the data in the background of the applicat
 how to track the data in the model and update the view accordingly. In the index.html
 file the following script tag imports knockout through a CDN:
 
-`
+```
     <!-- Knockout CDN -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.1/knockout-min.js"></script>
-`
+```
 
 Knockout is used to adjust the visibility of the buttons and markers based on
 search results from user input. It is also used to track the text typed in the
@@ -66,13 +66,13 @@ The main use of JQuery in this project was to simplify the process of making an
 AJAX request for data. JQuery is included in this project through a call to a CDN
 in the following line in index.html:
 
-`
+```
     <!-- JQuery CDN -->
     <script
     src="https://code.jquery.com/jquery-3.2.1.min.js"
     integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
     crossorigin="anonymous"></script>
-`
+```
 
 JQuery offers many features that were not utilized in this project so for the
 scope of this project only the JQuery AJAX methods are relevant. To read more
