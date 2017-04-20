@@ -27,10 +27,10 @@ To render and perform operations on the map, the Google Maps API was used. The
 API is imported into the application with the following script tag in index.html:
 
 ```
-<!-- Google Maps API -->
-<script async defer
-src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDBL9PC8OpuT8biiIBJzexP0TDCuINoRko&callback=initMap">
-</script>
+    <!-- Google Maps API -->
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDBL9PC8OpuT8biiIBJzexP0TDCuINoRko&callback=initMap">
+    </script>
 ```
 
 This loads the API into the project and specifies the method to call when the map
